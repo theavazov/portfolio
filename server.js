@@ -1,6 +1,5 @@
 const express = require("express");
 const { config } = require("dotenv");
-const { inject } = require("@vercel/analytics");
 
 config();
 
@@ -8,11 +7,8 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use((req, res, next) => {
-  // Modify the response to inject Vercel Analytics script
-  res.locals.analyticsScript = inject({
-    projectId: process.env.PROJECT_ID,
-    page: req.path,
-  });
+  const analyticsScript = `<script src="https://vizard.vercel-analytics.com/wizard.js"></script><script>window.vercelId="${process.env.PROJECT_ID}";</script>`;
+  res.locals.analyticsScript = analyticsScript;
   next();
 });
 
