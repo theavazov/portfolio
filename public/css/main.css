@@ -1,0 +1,7 @@
+@import "./utils.css";
+
+:root {
+  --cl-primary: #5293bb;
+  --cl-secondary: "";
+  --cl-black: #020105;
+}
