@@ -3,10 +3,18 @@ const { config } = require("dotenv");
 const { inject } = require("@vercel/analytics");
 
 config();
-inject({ framework: "express" });
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+app.use((req, res, next) => {
+  // Modify the response to inject Vercel Analytics script
+  res.locals.analyticsScript = inject({
+    projectId: process.env.PROJECT_ID,
+    page: req.path,
+  });
+  next();
+});
 
 app.use(express.static(__dirname + "/public"));
 app.set("views", __dirname + "/src/views");
