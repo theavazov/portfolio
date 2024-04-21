@@ -3,7 +3,7 @@ const { config } = require("dotenv");
 const { inject } = require("@vercel/analytics");
 
 config();
-inject();
+inject({ framework: "express" });
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -11,8 +11,6 @@ const port = process.env.PORT || 8080;
 app.use(express.static("public"));
 app.set("views", __dirname + "/src/views");
 app.set("view engine", "ejs");
-
-console.log(__dirname + "/src/views");
 
 app.get("/", (req, res) => {
   res.render("index", {
