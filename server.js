@@ -8,7 +8,7 @@ inject({ framework: "express" });
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(express.static("public"));
+app.use(express.static("assets"));
 app.set("views", __dirname + "/src/views");
 app.set("view engine", "ejs");
 
