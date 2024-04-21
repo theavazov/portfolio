@@ -14,9 +14,20 @@
   <meta property="twitter:title" content="<%= title %>" />
   <meta property="twitter:description" content="<%= description %>" />
   <meta property="twitter:image" content="Twitter link preview image URL" />
-  <meta property="twitter:card" content="<%= description %>" />
-  <!-- VERCEL ANALYTICS -->
-  <%- analyticsScript %>
+  <meta property="twitter:card" content="summary" />
+  <!-- GOOGLE ANALYTICS -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-YGPY6NX2K3"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-YGPY6NX2K3");
+  </script>
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
